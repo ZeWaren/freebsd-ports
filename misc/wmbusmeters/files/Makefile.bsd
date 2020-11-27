@@ -1,0 +1,64 @@
+PROG_CXX=  wmbusmeters
+
+COMMON_SRCS=    src/aes.cc \
+                src/aescmac.cc \
+                src/cmdline.cc \
+                src/config.cc \
+                src/dvparser.cc \
+                src/meters.cc \
+                src/meter_amiplus.cc \
+                src/meter_apator08.cc \
+                src/meter_apator162.cc \
+                src/meter_cma12w.cc \
+                src/meter_ebzwmbe.cc \
+                src/meter_ehzp.cc \
+                src/meter_esyswm.cc \
+                src/meter_eurisii.cc \
+                src/meter_fhkvdataiii.cc \
+                src/meter_hydrus.cc \
+                src/meter_hydrodigit.cc \
+                src/meter_iperl.cc \
+                src/meter_izar.cc \
+                src/meter_lansenth.cc \
+                src/meter_mkradio3.cc \
+                src/meter_multical21.cc \
+                src/meter_multical302.cc \
+                src/meter_omnipower.cc \
+                src/meter_q400.cc \
+                src/meter_qcaloric.cc \
+                src/meter_rfmamb.cc \
+                src/meter_rfmtx1.cc \
+                src/meter_supercom587.cc \
+                src/meter_vario451.cc \
+                src/printer.cc \
+                src/serial.cc \
+                src/shell.cc \
+                src/util.cc \
+                src/units.cc \
+                src/wmbus.cc \
+                src/wmbus_amb8465.cc \
+                src/wmbus_im871a.cc \
+                src/wmbus_cul.cc \
+                src/wmbus_d1tc.cc \
+                src/wmbus_rtlwmbus.cc \
+                src/wmbus_simulator.cc \
+                src/wmbus_rawtty.cc \
+                src/wmbus_wmb13u.cc \
+                src/wmbus_utils.cc
+        
+SRCS = ${COMMON_SRCS} src/main.cc
+TEST_SRCS = ${COMMON_SRCS} src/testinternals.cc
+
+LDADD=  -lpthread
+
+INCLUDEDIR=	     ${PREFIX}/src
+
+TEST_OBJS+= ${TEST_SRCS:R:S/$/.o/}
+
+.include <bsd.prog.mk>
+
+test: ${PROG}_test
+	@for f in ${.ALLSRC}; do ./$$f; done
+
+${PROG}_test: ${OBJS:Nsrc/main.o} ${TEST_OBJS}
+	${CXX} ${CPPFLAGS} ${CXXFLAGS} ${LDFLAGS} -o testinternals $> ${LDADD} ${TEST_LDADD}

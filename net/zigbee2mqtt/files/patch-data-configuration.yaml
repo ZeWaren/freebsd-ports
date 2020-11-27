@@ -1,0 +1,13 @@
+--- data/configuration.yaml.orig	2020-11-05 18:02:13.000000000 +0100
++++ data/configuration.yaml	2020-11-27 19:40:23.169765000 +0100
+@@ -18,3 +18,11 @@
+ serial:
+   # Location of CC2531 USB sniffer
+   port: /dev/ttyACM0
++
++advanced:
++  log_directory: /var/log/zigbee2mqtt
++  log_output:
++    - file
++  log_rotation: true
++  log_level: info

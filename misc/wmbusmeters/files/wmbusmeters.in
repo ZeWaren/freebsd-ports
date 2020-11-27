@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# $FreeBSD$
+#
+# PROVIDE: wmbusmeters
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add these lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# wmbusmeters_enable (bool):	Set to NO by default.
+#				Set it to YES to enable the server.
+# wmbusmeters_config (path):	Set to 
+#				%%PREFIX%%/etc/wmbusmeters.json by default.
+
+. /etc/rc.subr
+
+name="wmbusmeters"
+rcvar="wmbusmeters_enable"
+command="/usr/local/bin/wmbusmeters"
+
+load_rc_config $name
+: ${wmbusmeters_enable:="NO"}
+: ${wmbusmeters_config_dir:="/usr/local/"}
+
+start_cmd="/usr/sbin/daemon -f -u wmbusmeters $command --useconfig=$wmbusmeters_config_dir"
+
+run_rc_command "$1"

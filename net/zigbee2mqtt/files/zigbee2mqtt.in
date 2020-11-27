@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# PROVIDE: zigbee2mqtt
+# REQUIRE: LOGIN DAEMON NETWORKING
+# KEYWORD: jail
+
+# Enable this script by adding:
+# zigbee2mqtt_enable="YES"
+# ... to /etc/rc.conf
+
+. /etc/rc.subr
+
+name="zigbee2mqtt"
+rcvar="${name}_enable"
+
+zigbee2mqtt_user="zigbee2mqtt"
+zigbee2mqtt_command="/usr/local/bin/${name}"
+zigbee2mqtt_env="ZIGBEE2MQTT_DATA=/var/db/${name}/data"
+
+pidfile="/var/run/${name}/${name}.pid"
+
+command="/usr/sbin/daemon"
+command_args="-P ${pidfile} -r -f ${zigbee2mqtt_command}"
+
+load_rc_config $name
+: ${zigbee2mqtt_enable:=no}
+
+run_rc_command "$1"

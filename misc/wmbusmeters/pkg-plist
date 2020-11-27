@@ -1,0 +1,6 @@
+bin/wmbusmeters
+man/man1/wmbusmeters.1.gz
+etc/wmbusmeters.conf
+@dir etc/wmbusmeters.d
+@dir(wmbusmeters,wmbusmeters,) /var/db/wmbusmeters
+@dir(wmbusmeters,wmbusmeters,) /var/log/wmbusmeters

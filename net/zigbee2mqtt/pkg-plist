@@ -1,0 +1,6 @@
+bin/zigbee2mqtt
+bin/bindings.node
+@dir(zigbee2mqtt,zigbee2mqtt,750) /var/db/zigbee2mqtt/data/
+/var/db/zigbee2mqtt/data/configuration.yaml
+@dir(zigbee2mqtt,zigbee2mqtt,750) /var/log/zigbee2mqtt
+@dir(zigbee2mqtt,zigbee2mqtt,750) /var/run/zigbee2mqtt
