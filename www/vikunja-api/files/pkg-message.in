@@ -1,0 +1,8 @@
+[
+{ type: install
+  message: <<EOM
+Now it is time to configure this package.
+Copy %%PREFIX%%/share/examples/vikunja/config.yml.sample to /var/db/vikunja/config.yml and edit it.
+EOM
+}
+]

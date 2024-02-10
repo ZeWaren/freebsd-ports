@@ -1,0 +1,8 @@
+Vikunja is todo-app written in go.
+Stay organized by categorizing tasks into projects and creating hierarchical
+subprojects to keep related items together. Collaborate seamlessly with peers,
+allowing easy project sharing with individuals or entire teams. Assign tasks to
+specific individuals for clear accountability. Customize your experience by
+choosing different views, such as the classic list view, Gantt view for time
+management, Table view for comprehensive details, or Kanban for an overview of
+the status of all ongoing tasks.

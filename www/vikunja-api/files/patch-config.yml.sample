@@ -1,0 +1,37 @@
+--- config.yml.sample.orig	1979-11-29 23:00:00 UTC
++++ config.yml.sample
+@@ -21,9 +21,9 @@ service:
+   # The base path on the file system where the binary and assets are.
+   # Vikunja will also look in this path for a config file, so you could provide only this variable to point to a folder
+   # with a config file which will then be used.
+-  rootpath: <rootpath>
++  rootpath: "/var/db/vikunja"
+   # Path on the file system to serve static files from. Set to the path of the frontend files to host frontend alongside the api.
+-  staticpath: ""
++  staticpath: "/usr/local/www/vikunja/"
+   # The max number of items which can be returned per page
+   maxitemsperpage: 50
+   # Enable the caldav endpoint, see the docs for more details
+@@ -75,7 +75,7 @@ database:
+   # Database to use
+   database: "vikunja"
+   # When using sqlite, this is the path where to store the data
+-  path: "./vikunja.db"
++  path: "/var/db/vikunja/vikunja.db"
+   # Sets the max open connections to the database. Only used when using mysql and postgres.
+   maxopenconnections: 100
+   # Sets the maximum number of idle connections to the db.
+@@ -154,11 +154,11 @@ mailer:
+ 
+ log:
+   # A folder where all the logfiles should go.
+-  path: <rootpath>logs
++  path: /var/log/vikunja
+   # Whether to show any logging at all or none
+   enabled: true
+   # Where the normal log should go. Possible values are stdout, stderr, file or off to disable standard logging.
+-  standard: "stdout"
++  standard: "file"
+   # Change the log level. Possible values (case-insensitive) are CRITICAL, ERROR, WARNING, NOTICE, INFO, DEBUG.
+   level: "INFO"
+   # Whether or not to log database queries. Useful for debugging. Possible values are stdout, stderr, file or off to disable database logging.

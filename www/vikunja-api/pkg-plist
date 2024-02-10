@@ -1,0 +1,5 @@
+bin/vikunja
+%%EXAMPLESDIR%%/config.yml.sample
+@dir(vikunja,vikunja) /var/db/vikunja
+@dir(vikunja,vikunja,) /var/run/vikunja
+@dir(vikunja,vikunja) /var/log/vikunja
