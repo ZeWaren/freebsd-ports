@@ -1,0 +1,4 @@
+bin/anki-sync-server
+@dir(anki,anki,) /var/db/anki
+@dir(anki,anki,) /var/log/anki
+@dir(anki,anki,) /var/run/anki

@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# PROVIDE: anki-sync-server
+# REQUIRE: LOGIN networking
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name=anki_sync_server
+rcvar=anki_sync_server_enable
+
+load_rc_config $name
+: ${anki_sync_server_enable:="NO"}
+: ${anki_sync_server_config:="SYNC_USER1=user:pass"}
+
+anki_sync_server_user="anki"
+anki_sync_server_env="SYNC_BASE=/var/db/anki ${anki_sync_server_config}"
+
+anki_sync_server_command="%%PREFIX%%/bin/anki-sync-server"
+pidfile="/var/run/anki/${name}.pid"
+command="/usr/sbin/daemon"
+command_args="-P ${pidfile} -o /var/log/anki/anki.log -r -f ${anki_sync_server_command}"
+
+run_rc_command "$1"
